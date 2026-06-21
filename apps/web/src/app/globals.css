@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0a0e1a;
+  --bg-deep: #05070d;
+  --foreground: #ffffff;
+  --muted: rgba(255, 255, 255, 0.45);
+  --muted-2: rgba(255, 255, 255, 0.6);
+  --card: rgba(255, 255, 255, 0.03);
+  --card-2: rgba(255, 255, 255, 0.024);
+  --card-border: rgba(255, 255, 255, 0.07);
+  --card-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
+  --cyan: #00f0ff;
+  --pink: #ff2d7b;
+  --gold: #ffd666;
+  --green: #14f195;
+  --cyan-soft: rgba(0, 240, 255, 0.14);
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-jetbrains);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--foreground);
+  font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0, 240, 255, 0.18); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 240, 255, 0.35); }
+
+/* Reusable design-system primitives */
+.dc-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  box-shadow: var(--card-highlight);
+}
+.mono { font-family: var(--font-jetbrains), ui-monospace, monospace; }
+
+/* Neon glow utility for the primary cyan */
+.glow-cyan { filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.55)); }
+
+/* Animations */
+@keyframes flash-up {
+  0% { background-color: rgba(0, 240, 255, 0.22); }
+  100% { background-color: transparent; }
+}
+@keyframes flash-down {
+  0% { background-color: rgba(255, 45, 123, 0.22); }
+  100% { background-color: transparent; }
+}
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.5); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 5px rgba(0, 240, 255, 0); }
+}
+.flash-up { animation: flash-up 0.6s ease-out; }
+.flash-down { animation: flash-down 0.6s ease-out; }
+.ticker-track { animation: ticker-scroll 36s linear infinite; white-space: nowrap; }
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }

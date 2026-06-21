@@ -1,0 +1,15 @@
+{
+  "name": "crypto-pulse",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter @crypto-pulse/web dev",
+    "dev:api": "pnpm --filter @crypto-pulse/api dev",
+    "dev:all": "pnpm --parallel --filter './apps/*' dev",
+    "build": "pnpm --filter @crypto-pulse/shared build && pnpm --filter @crypto-pulse/web build && pnpm --filter @crypto-pulse/api build",
+    "db:generate": "pnpm --filter @crypto-pulse/api db:generate",
+    "db:migrate": "pnpm --filter @crypto-pulse/api db:migrate",
+    "db:seed": "pnpm --filter @crypto-pulse/api db:seed",
+    "db:studio": "pnpm --filter @crypto-pulse/api db:studio"
+  }
+}
